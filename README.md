@@ -13,7 +13,7 @@ Class project for ITU SEN964 - OOP with JAVA
   3. History can use Array, Stack or Queue. '=' will run previous calculation, can we do it easily with history?
   4. Multiple buttons will be initialized, we might need a button factory to bind buttons with its functions. And a dataset for coordination and outlook of each button.
   5. GUI should also accept keyboard input. how do we design the modules to make this easy to implement?
-3. Implementation (Devide and concure)
+3. Implementation (Divide and concur)
   * (@TODO)
 4. Testing/debugging (Hopefuly, we will have enough time to test all functions)
   * (@TODO)
