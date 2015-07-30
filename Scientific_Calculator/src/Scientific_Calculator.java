@@ -129,8 +129,29 @@ public class Scientific_Calculator extends javax.swing.JFrame {
     }
     private void jTextFieldKeyReleased(java.awt.event.KeyEvent evt) {                                       
         // TODO add your handling code here:
-        System.out.println(evt.toString());
-        calculator.addInput(evt.toString());
+        char ch = evt.getKeyChar();
+        
+        //System.out.println(event.toString());
+        //System.out.println(String.format("Key Pressed: %c", ch));
+        
+        if (evt.getKeyCode() == 27) { // 27 is key "Esc"
+            System.exit(0);
+            // TODO change to CE?
+        }
+        
+         // replace '\n' to '='
+        if (ch == '\n') { ch = '='; }
+        
+        if (Character.isDigit(ch) || ch == '.' ||
+                ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%' ||
+                ch == '=' ||
+                ch == '(' || ch == ')') {
+            calculator.addInput(String.valueOf(ch));
+            jTextField.setText(jTextField.getText() + String.valueOf(ch));
+            System.out.println(String.format("Key Pressed: %c", ch));
+        } else {
+            // ignore other inputs
+        }
     }
     private static boolean jvmSupported(){
         String version = System.getProperty("java.version");
