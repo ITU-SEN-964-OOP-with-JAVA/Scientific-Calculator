@@ -48,10 +48,10 @@ public class Scientific_Calculator extends javax.swing.JFrame {
         // Buttons
         // Refer to http://docs.oracle.com/javase/7/docs/api/java/lang/Math.html
         String [] buttonsText = {"(", ")", "abs", "", "CE", "C", "/",
-                                 "", "exp", "log", "7", "8", "9", "*",
-                                 "sin", "csc", "", "4", "5", "6", "-",
-                                 "cos", "sec", "sqrt", "1", "2", "3", "+",
-                                 "tan", "cot", "cbrt", "0", ".", "%", "="};
+                                 "ceil", "floor", "log", "7", "8", "9", "*",
+                                 "sin", "asin", "exp", "4", "5", "6", "-",
+                                 "cos", "acos", "sqrt", "1", "2", "3", "+",
+                                 "tan", "atan", "round", "0", ".", "%", "="};
         // init all buttons
         this.jButtons = new javax.swing.JButton[buttonsText.length];
 
@@ -242,6 +242,7 @@ class Calculator {
     public void addInput(char c) {
         addInput(String.valueOf(c));
     }
+
     public void addInput(String s) {
         if (s.equals("=")) {
             //parseInput();
@@ -254,15 +255,51 @@ class Calculator {
             this.reset();
         } else if (s.equals("CE")) {
             list.set(list.size()-1, "");
-        } else if (s.equals("sin") || s.equals("csc") ||
-                   s.equals("cos") || s.equals("sec") ||
-                   s.equals("log") || s.equals("ln") ||
-                   s.equals("tan") || s.equals("cot") ||
-                   s.equals("sqrt") || s.equals("cbrt")||
-                   s.equals("exp") || s.equals("abs")
-                   ) {
-            list.add("Math."+s+"(");
-            open_bracket++;
+        } else if (s.equals("(")) {
+            if(this.list.isEmpty()) {
+                list.add(s);
+                this.open_bracket++;
+            } else {
+                String lastElement = list.get(list.size()-1);
+                if(!this.isUnaryOperator(lastElement) && !this.isBinaryOperator(lastElement)) {
+                    list.add("*"+s);
+                this.open_bracket++;
+                }
+            }
+        } else if (s.equals(")")) {
+            list.add(s);
+            if(this.open_bracket>=0) {
+                this.open_bracket++;                
+            }
+        } else if (this.isUnaryOperator(s)) { // sin, cos, ...
+            if(this.list.isEmpty()) {
+                list.add("Math."+s+"(");
+                open_bracket++;
+            }
+            else{
+                String lastElement = list.get(list.size()-1);
+                if(this.isUnaryOperator(lastElement)){
+                    list.set(list.size() - 1, "Math."+s+"(");
+                } else if(this.isBinaryOperator(lastElement)){
+                    list.add("Math."+s+"(");
+                    open_bracket++;
+                }else {
+                    list.add("*Math."+s+"(");
+                    open_bracket++;
+                }
+            }
+        } else if (this.isBinaryOperator(s)) {
+            if(this.list.isEmpty()) {
+                list.add(s);
+            }
+            else{
+                String lastElement = list.get(list.size()-1);
+                if(this.isBinaryOperator(lastElement)){
+                    list.set(list.size() - 1, s);
+                } else {
+                    list.add(s);
+                }
+            }
         } else {
             list.add(s);
         }
@@ -296,7 +333,19 @@ class Calculator {
             return se.toString();
         }
     }
-
+    private boolean isBinaryOperator(String str) {
+        return str.equals("+")  || str.equals("-")  ||
+               str.equals("*")  || str.equals("/");
+    }
+    private boolean isUnaryOperator(String str) {
+        return str.equals("sin")  || str.equals("asin")  ||
+               str.equals("cos")  || str.equals("acos")  ||
+               str.equals("log")  || str.equals("ln")    ||
+               str.equals("tan")  || str.equals("atan")  ||
+               str.equals("sqrt") || str.equals("round") ||
+               str.equals("exp")  || str.equals("abs")   ||
+               str.equals("floor")  || str.equals("ceil");
+    }
     public String getOutput() {
         return ans;
     }
