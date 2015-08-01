@@ -159,7 +159,7 @@ public class Scientific_Calculator extends javax.swing.JFrame {
 
     private static boolean jvmSupported(){
         String version = System.getProperty("java.version");
-        if (version.startsWith("1.7") || version.startsWith("1.8")) {
+        if (version.startsWith("1.6") || version.startsWith("1.7") || version.startsWith("1.8")) {
             return true;
         } else {
             System.out.println("JVM version " + version + " not supported.");
@@ -236,7 +236,7 @@ class Calculator {
     private int open_bracket = 0;
 
     public Calculator(){
-        list = new java.util.ArrayList<>();
+        list = new java.util.ArrayList<String>();
     }
 
     public void addInput(char c) {
