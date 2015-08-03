@@ -1,6 +1,12 @@
 /**
- * @author Xueyuan Zhang (ITU id: 86209)
- *         Mei Qiao      (ITU id: 85325)
+ *  ITU SEN964 OOP with JAVA Final project:
+ * 
+ *  Title: Scientific Calculator
+ * 
+ *  Students:
+ *      Mei Qiao      (ITU id: 85325)
+ *      Xueyuan Zhang (ITU id: 86209)
+ *      
  */
 
 public class Scientific_Calculator extends javax.swing.JFrame {
