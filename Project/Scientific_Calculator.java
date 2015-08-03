@@ -1,5 +1,6 @@
 /**
- * @author Xueyuan，Mei Qiao (ITU id:85325)
+ * @author Xueyuan Zhang (ITU id: 86209)
+ *         Mei Qiao      (ITU id: 85325)
  */
 
 public class Scientific_Calculator extends javax.swing.JFrame {
