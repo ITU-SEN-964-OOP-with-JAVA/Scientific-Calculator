@@ -4,8 +4,9 @@
  *  Title: Scientific Calculator
  * 
  *  Students:
- *      Mei Qiao      (ITU id: 85325)
- *      Xueyuan Zhang (ITU id: 86209)
+ *      Mei Qiao        (ITU id: 85325)
+ *      Xueyuan Zhang   (ITU id: 86209)
+ *      Xi Wang         (ITU id: 88614)
  *      
  */
 
