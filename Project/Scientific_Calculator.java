@@ -8,7 +8,7 @@
  *      Xueyuan Zhang   (ITU id: 86209)
  *      Xi Wang         (ITU id: 88614)
  *      Hanwen Yang     (ITU id: 86971)
- *      
+ *      Ling Lok Ngai   (ITU id: 88582)
  */
 
 public class Scientific_Calculator extends javax.swing.JFrame {
