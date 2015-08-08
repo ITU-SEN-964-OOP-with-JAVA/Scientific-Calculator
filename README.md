@@ -11,7 +11,7 @@ Class project for ITU SEN964 - OOP with JAVA
   5. Keyboard input accepts '+', '-', '*', '/', numbers and '.'.
   6. Using javascript engine to run the real calculation.
 3. Implementation (Divide and concur)
-  * Done
+  * Done, targeting Java 1.6, 1.7, 1.8.
 4. Testing/debugging (Hopefuly, we will have enough time to test all functions)
   * Fix lossing previous result issue.
   * Fix unaryOperator causing NaN issue.
