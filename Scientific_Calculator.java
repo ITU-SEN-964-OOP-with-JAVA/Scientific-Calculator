@@ -59,7 +59,7 @@ public class Scientific_Calculator extends javax.swing.JFrame {
 
         // Buttons
         // Refer to http://docs.oracle.com/javase/7/docs/api/java/lang/Math.html
-        String [] buttonsText = {"(", ")", "abs", "", "CE", "C", "/",
+        String [] buttonsText = {"(", ")", "abs", "", "BACK", "C", "/",
                                  "ceil", "floor", "log", "7", "8", "9", "*",
                                  "sin", "asin", "exp", "4", "5", "6", "-",
                                  "cos", "acos", "sqrt", "1", "2", "3", "+",
@@ -240,9 +240,12 @@ class Calculator {
             }
         } else if (s.equals("C")) {
             this.reset();
-        } else if (s.equals("CE")) {
+        } else if (s.equals("BACK")) {
             if(!this.list.isEmpty()) {
-                list.set(list.size()-1, "");
+                if(list.get(list.size() - 1).contains("(")) {
+                    open_bracket--;
+                }
+                list.remove(list.size() - 1);
             }
         } else if (s.equals("(")) {
             if(this.list.isEmpty()) {
@@ -258,7 +261,7 @@ class Calculator {
         } else if (s.equals(")")) {
             list.add(s);
             if(this.open_bracket>=0) {
-                this.open_bracket++;                
+                this.open_bracket--;                
             }
         } else if (this.isUnaryOperator(s)) { // sin, cos, ...
             if(this.list.isEmpty()) {
