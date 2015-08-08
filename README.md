@@ -3,17 +3,19 @@ Class project for ITU SEN964 - OOP with JAVA
 
 1. Project define (Descript projects we are gonna implement)
   * Several reference:
-    1. google calculator (https://www.google.com/search?q=scientific+calculator&oq=scientific+calculator&aqs=chrome..69i57j0l2j69i60j0l2.415j0j7&sourceid=chrome&es_sm=122&ie=UTF-8)
-    2. http://web2.0calc.com/
-    3. windows calcultor (May be not good idea, not sure if everyone use windows)
-    4. suggestion?
+    1. windows calcultor (similar to windows calcultor, but implements per Java's advantage)
+
 2. Module devide (History, GUI, functions, ...)
-  1. which GUI lib to pick? (awt? swing? javafx? ...)
-  2. MVC module structure? or anything better?
-  3. History can use Array, Stack or Queue. '=' will run previous calculation, can we do it easily with history?
-  4. Multiple buttons will be initialized, we might need a button factory to bind buttons with its functions. And a dataset for coordination and outlook of each button.
-  5. GUI should also accept keyboard input. how do we design the modules to make this easy to implement?
+  1. which GUI lib to pick? (swing)
+  3. Use LinkedArray to capture the inputs, and input '=' or 'Enter' will execuate calculation.
+  4. Buttons will be initialized with the string array.
+  5. Keyboard input accepts '+', '-', '*', '/', numbers and '.'.
+  6. Using javascript engine to run the real calculation.
+
 3. Implementation (Divide and concur)
-  * (@TODO)
+  * Done, targeting Java 1.6, 1.7, 1.8.
+
 4. Testing/debugging (Hopefuly, we will have enough time to test all functions)
-  * (@TODO)
+  * Fix lossing previous result issue.
+  * Fix unaryOperator causing NaN issue.
+  * Fix showing error message issue.
