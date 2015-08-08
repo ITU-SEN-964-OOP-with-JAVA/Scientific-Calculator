@@ -175,32 +175,6 @@ public class Scientific_Calculator extends javax.swing.JFrame {
             return false;
         }
     }
-    private static boolean testCalculator() {
-        Calculator c = new Calculator();
-        c.addInput('1');
-        c.addInput('+');
-        c.addInput('1');
-        c.addInput('=');
-        System.out.println(c.getOutput());
-
-        c.addInput('1');
-        c.addInput('=');
-        System.out.println(c.getOutput());
-        
-        c.addInput("sin");
-        c.addInput('1');
-        c.addInput('=');
-        System.out.println(c.getOutput());
-        
-        c.addInput('1');
-        c.addInput('+');
-        c.addInput("C");
-        c.addInput('1');
-        c.addInput('=');
-        System.out.println(c.getOutput());
-
-        return false;
-    }
     /**
      * @param args the command line arguments
      */
@@ -263,7 +237,9 @@ class Calculator {
         } else if (s.equals("C")) {
             this.reset();
         } else if (s.equals("CE")) {
-            list.set(list.size()-1, "");
+            if(!this.list.isEmpty()) {
+                list.set(list.size()-1, "");
+            }
         } else if (s.equals("(")) {
             if(this.list.isEmpty()) {
                 list.add(s);
@@ -288,7 +264,8 @@ class Calculator {
             else{
                 String lastElement = list.get(list.size()-1);
                 if(this.isUnaryOperator(lastElement)){
-                    list.set(list.size() - 1, "Math."+s+"(");
+                    String withStar = lastElement.startsWith("*")?"*":"";
+                    list.set(list.size() - 1, withStar + "Math."+s+"(");
                 } else if(this.isBinaryOperator(lastElement)){
                     list.add("Math."+s+"(");
                     open_bracket++;
@@ -339,7 +316,8 @@ class Calculator {
         } catch (javax.script.ScriptException se) {
             System.out.println(se.toString());
             reset();
-            return se.toString();
+            //return se.toString();
+            return "Fail to parse " + str;
         }
     }
     private boolean isBinaryOperator(String str) {
@@ -353,7 +331,23 @@ class Calculator {
                str.equals("tan")  || str.equals("atan")  ||
                str.equals("sqrt") || str.equals("round") ||
                str.equals("exp")  || str.equals("abs")   ||
-               str.equals("floor")  || str.equals("ceil");
+               str.equals("floor")|| str.equals("ceil")  ||
+
+               str.equals("Math.sin(")  || str.equals("Math.asin(")  ||
+               str.equals("Math.cos(")  || str.equals("Math.acos(")  ||
+               str.equals("Math.log(")  || str.equals("Math.ln(")    ||
+               str.equals("Math.tan(")  || str.equals("Math.atan(")  ||
+               str.equals("Math.sqrt(") || str.equals("Math.round(") ||
+               str.equals("Math.exp(")  || str.equals("Math.abs(")   ||
+               str.equals("Math.floor(")|| str.equals("Math.ceil(")  ||
+
+               str.equals("*Math.sin(")  || str.equals("*Math.asin(")  ||
+               str.equals("*Math.cos(")  || str.equals("*Math.acos(")  ||
+               str.equals("*Math.log(")  || str.equals("*Math.ln(")    ||
+               str.equals("*Math.tan(")  || str.equals("*Math.atan(")  ||
+               str.equals("*Math.sqrt(") || str.equals("*Math.round(") ||
+               str.equals("*Math.exp(")  || str.equals("*Math.abs(")   ||
+               str.equals("*Math.floor(")|| str.equals("*Math.ceil(");
     }
     public String getOutput() {
         return ans;
