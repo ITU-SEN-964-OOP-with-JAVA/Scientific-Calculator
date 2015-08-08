@@ -309,10 +309,14 @@ class Calculator {
     private String calculate(String str) {
         try {
             Object result = engine.eval(str);
-            System.out.println(result.toString());
+            System.out.println("Parsing " + result.toString());
             reset();
-            list.add(result.toString());
-            return result.toString();
+            if (!("NaN").equals(result.toString())) {
+                list.add(result.toString());
+                return result.toString();
+            } else {
+                return "Fail to parse " + str;
+            }
         } catch (javax.script.ScriptException se) {
             System.out.println(se.toString());
             reset();
