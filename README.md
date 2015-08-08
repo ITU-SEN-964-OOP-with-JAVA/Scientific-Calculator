@@ -11,6 +11,7 @@ Class project for ITU SEN964 - OOP with JAVA
   4. Buttons will be initialized with the string array.
   5. Keyboard input accepts '+', '-', '*', '/', numbers and '.'.
   6. Using javascript engine to run the real calculation.
+  7. Will try to capture the focus for the textField to capture keyboard input. (:red_circle:)
 
 3. Implementation (Divide and concur)
   * Done, targeting Java 1.6, 1.7, 1.8.
