@@ -325,7 +325,7 @@ class Calculator {
     private String calculate(String str) {
         try {
             Object result = engine.eval(str);
-            System.out.println("Parsing " + result.toString());
+            System.out.println("Result " + result.toString());
             reset();
             if (("NaN").equals(result.toString())) {
                 return "Fail to parse " + str;
