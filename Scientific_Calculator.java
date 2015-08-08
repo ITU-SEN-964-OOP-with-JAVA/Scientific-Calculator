@@ -313,11 +313,15 @@ class Calculator {
             Object result = engine.eval(str);
             System.out.println("Parsing " + result.toString());
             reset();
-            if (!("NaN").equals(result.toString())) {
+            if (("NaN").equals(result.toString())) {
+                return "Fail to parse " + str;
+            } else if (("0.0").equals(result.toString())) {
+                return "0.0";
+            } else if (("0").equals(result.toString())) {
+                return "0";
+            } else {
                 list.add(result.toString());
                 return result.toString();
-            } else {
-                return "Fail to parse " + str;
             }
         } catch (javax.script.ScriptException se) {
             System.out.println(se.toString());
