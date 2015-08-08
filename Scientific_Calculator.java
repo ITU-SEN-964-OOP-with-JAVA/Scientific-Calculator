@@ -37,7 +37,8 @@ public class Scientific_Calculator extends javax.swing.JFrame {
     private void initComponents() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("SEN964 - Scientific Calculator");
-
+        this.setResizable(false);
+        this.setLocationByPlatform(true);
         // TextField
         this.jTextField = new javax.swing.JTextField();
         this.jTextField.setEditable(false);
@@ -219,7 +220,7 @@ class Calculator {
     private java.util.ArrayList<String> list = null;
     private String ans = null;
     private int open_bracket = 0;
-
+    private boolean first_input = true;
     public Calculator(){
         list = new java.util.ArrayList<String>();
     }
@@ -232,6 +233,7 @@ class Calculator {
         if (s.equals("=")) {
             //parseInput();
             System.out.println(ans);
+            first_input = true;
             if(!list.isEmpty()) {
                 ans = calculate(ans);
                 return;
@@ -289,8 +291,17 @@ class Calculator {
                 }
             }
         } else {
-            list.add(s);
+            // if previous result is number and current input is number as well
+
+            if(list.isEmpty()) {
+                list.add(s);
+            } else if (first_input) {
+                list.set(list.size() - 1, s);
+            } else {
+                list.add(s);
+            }
         }
+        first_input = false;
         parseInput();
     }
     
@@ -315,10 +326,6 @@ class Calculator {
             reset();
             if (("NaN").equals(result.toString())) {
                 return "Fail to parse " + str;
-            } else if (("0.0").equals(result.toString())) {
-                return "0.0";
-            } else if (("0").equals(result.toString())) {
-                return "0";
             } else {
                 list.add(result.toString());
                 return result.toString();
