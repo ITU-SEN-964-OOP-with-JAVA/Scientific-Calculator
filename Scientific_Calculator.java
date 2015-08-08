@@ -276,7 +276,10 @@ class Calculator {
                 } else if(this.isBinaryOperator(lastElement)){
                     list.add("Math."+s+"(");
                     open_bracket++;
-                }else {
+                } else if (first_input) {
+                    list.set(list.size() - 1, "Math."+s+"(");
+                    open_bracket++;
+                } else {
                     list.add("*Math."+s+"(");
                     open_bracket++;
                 }
@@ -295,7 +298,6 @@ class Calculator {
             }
         } else {
             // if previous result is number and current input is number as well
-
             if(list.isEmpty()) {
                 list.add(s);
             } else if (first_input) {
