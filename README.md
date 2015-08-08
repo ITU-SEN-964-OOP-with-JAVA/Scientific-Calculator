@@ -8,12 +8,13 @@ Class project for ITU SEN964 - OOP with JAVA
     3. windows calcultor (May be not good idea, not sure if everyone use windows)
     4. suggestion?
 2. Module devide (History, GUI, functions, ...)
-  1. which GUI lib to pick? (awt? swing? javafx? ...)
-  2. MVC module structure? or anything better?
-  3. History can use Array, Stack or Queue. '=' will run previous calculation, can we do it easily with history?
-  4. Multiple buttons will be initialized, we might need a button factory to bind buttons with its functions. And a dataset for coordination and outlook of each button.
-  5. GUI should also accept keyboard input. how do we design the modules to make this easy to implement?
+  1. which GUI lib to pick? (swing)
+  3. History can use LinkedArray. '=' or 'Enter' will run calculation.
+  4. Multiple buttons will be initialized with the string array.
+  5. GUI accepts keyboard input, '+', '-', '*', '/', numbers and '.'.
 3. Implementation (Divide and concur)
-  * (@TODO)
+  * Done
 4. Testing/debugging (Hopefuly, we will have enough time to test all functions)
-  * (@TODO)
+  * Fix lossing previous result issue.
+  * Fix unaryOperator causing NaN issue.
+  * Fix showing error message issue.
